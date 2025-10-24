@@ -145,4 +145,3 @@ AI-Image-Detection/
     ├── visualizations/                   # Plots and heatmaps
     ├── logs/                             # Training and API logs
     └── reports/                          # Final evaluation reports
-
