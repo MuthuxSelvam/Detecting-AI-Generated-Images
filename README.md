@@ -20,12 +20,12 @@ Open-Source & API: Fully documented with deployment-ready REST API for integrati
 📁 Project Structure:
 ai-image-detection/
 ├── README.md
-├── requirements.txt
-├── app.py
-├── detect.py
-├── .gitignore
-├── LICENSE
-├── ai_image_detector.h5
+├── requirements.txt 
+├── app.py 
+├── detect.py 
+├── .gitignore 
+├── LICENSE   
+├── ai_image_detector.h 
 ├── templates/
 │   └── index.html
 └── static/
