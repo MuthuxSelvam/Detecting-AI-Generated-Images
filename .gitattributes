@@ -1,0 +1,42 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Custom Configs
+*.py text diff=python
+*.js text
+*.css text
+*.html text
+*.md text
+*.txt text
+*.json text
+
+# Scripts
+*.sh text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+
+# Data & Models
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.tflite filter=lfs diff=lfs merge=lfs -text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.svg binary
+*.gz binary
+*.zip binary
+*.7z binary

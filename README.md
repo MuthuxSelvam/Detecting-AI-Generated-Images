@@ -1,119 +1,244 @@
-# Detecting-AI-Generated-Images
-Generative AI models like DALL·E, Midjourney, and StyleGAN2 can now create hyper-realistic synthetic images, posing major risks such as misinformation, identity fraud, copyright violations, and erosion of public trust. Without reliable automated detection, these images spread unchecked across digital platforms.
-The project implements a Hybrid CNN-Vision Transformer (ViT) architecture for detecting AI
-generated images with high accuracy, combining the strengths of convolutional neural networks for local feature extraction and vision transformers for global pattern recognition          
-🏆 Presented at ICSEIT 2K25 Conference (April 11-12, 2025)**  
-📖 Published: ISBN 978-93-342-0319
+# 🕵️ AI Image Detector
 
-🚀 Features
+A professional-grade AI image detector that distinguishes between **Real** and **AI-Generated** images using a Multi-Modal Ensemble approach.
 
-Hybrid CNN-ViT Architecture: Integrates local texture analysis (CNN) with global structural assessment (Vision Transformers).
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
 
-High Accuracy & Robustness: Achieves 92.6% correctness, with enhanced detection resilience against compression and noise (+28%).
+## ✨ Features
 
-Fast Processing: Capable of analyzing over 1,000 images per minute, suitable for real-time applications.
+- **EfficientNet-B0** backbone for spatial feature extraction
+- **FFT Analysis** for detecting periodic GAN/Diffusion patterns
+- **Noise Residual Analysis** for statistical anomaly detection
+- **FastAPI Backend** for high-performance inference
+- **Streamlit Dashboard** for user-friendly interactions
 
-Explainability: Incorporates Grad-CAM visualizations to highlight manipulated regions within images.
+## 🔧 Prerequisites
 
-Open-Source & API: Fully documented with deployment-ready REST API for integration into media verification workflows.
+- **Python 3.8+** ([Download](https://www.python.org/downloads/))
+- **Git** ([Download](https://git-scm.com/downloads))
+- **GPU (Optional)**: NVIDIA GPU with CUDA for faster inference
 
-📁 Project Structure             
-ai-image-detection/                   
-├── README.md              
-├── requirements.txt           
-├── app.py                  
-├── detect.py               
-├── .gitignore          
-├── LICENSE             
-├── ai_image_detector.h           
-├── templates/                                                                                   
-│   └── index.html                                           
-└── static/            
-    └── uploads/                     
-        └── .gitkeep     
+## 🚀 Quick Start
 
-    ├── visualizations/                   # Plots and heatmaps
-    ├── logs/                             # Training and API logs
-    └── reports/                          # Final evaluation reports
+### Step 1: Clone the Repository
 
-⚙️ Installation
-1. Clone the repository
+```bash
 git clone https://github.com/MuthuxSelvam/Detecting-AI-Generated-Images.git
 cd Detecting-AI-Generated-Images
-2. Create a virtual environment
+```
+
+### Step 2: Create Virtual Environment
+
+<details>
+<summary><b>🪟 Windows (PowerShell)</b></summary>
+
+```powershell
 python -m venv venv
-source venv/bin/activate        # Linux / Mac
-venv\Scripts\activate           # Windows
-3. Install dependencies
+.\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+```
 
-▶️ Usage
-1: Web Interface                  
-python app.py
+</details>
 
-Open your browser:
+<details>
+<summary><b>🪟 Windows (CMD)</b></summary>
 
-http://127.0.0.1:5000/
+```cmd
+python -m venv venv
+venv\Scripts\activate.bat
+pip install -r requirements.txt
+```
 
+</details>
 
-Upload an image and get instant predictions with confidence scores.
+<details>
+<summary><b>🐧 Linux / 🍎 macOS</b></summary>
 
-Option 2: Command-Line Detection
-Single Image
-python detect.py --image path/to/image.jpg
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-Batch Detection
-python detect.py --input_dir path/to/folder/
+</details>
 
+### Step 3: Generate Sample Data (Optional)
 
-Output will show classification, confidence, and probabilities for each image.
+```bash
+python verify_setup.py
+```
 
-📊 Model Performance
-Model	       Accuracy	Precision	Recall	F1-Score
-CNN Baseline    89.3%	 88.7%	     89.9%	 89.3%
-ViT	            91.2%	 90.8%	     91.6%	 91.2%
-Hybrid CNN-ViT	94.7%	 94.3%	     95.1%	 94.7%
+### Step 4: Run the Application
 
-🔍 Key Features
+<details>
+<summary><b>🪟 Windows (PowerShell)</b></summary>
 
-✅ Detect AI-generated images in real-time
+```powershell
+.\run_app.ps1
+```
 
-✅ Pixel-level anomaly detection
+</details>
 
-✅ Metadata and compression artifact analysis
+<details>
+<summary><b>🪟 Windows (CMD)</b></summary>
 
-✅ Batch processing support
+```cmd
+run_app.bat
+```
 
-✅ Confidence scores with probability visualization
+</details>
 
-✅ Easy web and CLI integration
+<details>
+<summary><b>🐧 Linux / 🍎 macOS</b></summary>
 
-🛠 Technologies Used
+```bash
+chmod +x run_app.sh
+./run_app.sh
+```
 
-Python 3.8+
+</details>
 
-TensorFlow / Keras (Deep Learning)
+<details>
+<summary><b>Manual Start (Any Platform)</b></summary>
 
-Flask (Web Application)
+**Terminal 1 - Start API:**
+```bash
+uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
 
-OpenCV (Image Processing)
+**Terminal 2 - Start Dashboard:**
+```bash
+streamlit run dashboard.py
+```
 
-NumPy (Numerical Computing)
+</details>
 
-HTML / CSS / JavaScript (Frontend UI)
+### Step 5: Open Dashboard
 
-🚀 Future Improvements
+Navigate to: **http://localhost:8501**
 
-⚡ Deployment on Heroku / AWS / Render
+---
 
-🧠 Integration of Vision Transformers for higher accuracy
+## 📁 Project Structure
 
-📱 Mobile app support (iOS / Android)
+```
+Detecting-AI-Generated-Images/
+├── api/
+│   └── main.py          # FastAPI backend
+├── ml/
+│   ├── analysis.py      # FFT & Noise analysis
+│   ├── dataset.py       # Data loader with augmentations
+│   ├── model.py         # EfficientNet-B0 Ensemble
+│   └── train.py         # Training loop
+├── data/                # Training data (see data/README.md)
+├── dashboard.py         # Streamlit UI
+├── best_model.pth       # Pre-trained model weights
+├── verify_setup.py      # Generate dummy data
+├── run_app.ps1          # Windows PowerShell script
+├── run_app.bat          # Windows CMD script
+├── run_app.sh           # Linux/macOS script
+└── requirements.txt     # Dependencies
+```
 
-🌐 Multi-language detection and localization
+## 🎯 API Endpoints
 
-📈 Real-time video frame detection
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Health check |
+| `/predict` | POST | Upload image for detection |
 
+### Example API Usage
 
+```python
+import requests
 
- 
+url = "http://127.0.0.1:8000/predict"
+files = {"file": open("image.jpg", "rb")}
+response = requests.post(url, files=files)
+print(response.json())
+# {"filename": "image.jpg", "is_fake": true, "probability": 0.87, "label": "Fake"}
+```
+
+## 📊 Model Architecture
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  RGB Image  │     │  FFT Map    │     │ Noise Map   │
+│ (224x224x3) │     │ (224x224x1) │     │ (224x224x3) │
+└──────┬──────┘     └──────┬──────┘     └──────┬──────┘
+       │                   │                   │
+       ▼                   ▼                   ▼
+┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+│EfficientNet  │   │ CNN Encoder  │   │ CNN Encoder  │
+│    B0        │   │   (64 dim)   │   │   (64 dim)   │
+└──────┬───────┘   └──────┬───────┘   └──────┬───────┘
+       │                   │                   │
+       └───────────────────┼───────────────────┘
+                           ▼
+                  ┌─────────────────┐
+                  │  Fusion Head    │
+                  │ (1280+64+64→1)  │
+                  └────────┬────────┘
+                           ▼
+                      Real / Fake
+```
+
+## 🏋️ Training Your Own Model
+
+```bash
+# Prepare your data in data/train/real, data/train/fake, etc.
+# Then run:
+python -m ml.train --data_dir data --epochs 10 --batch_size 16
+```
+
+## 🔧 Configuration
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Image Size | 224x224 | Input image dimensions |
+| Batch Size | 16 | Training batch size |
+| Learning Rate | 1e-4 | Adam optimizer LR |
+| Augmentations | JPEG, Blur, Flip | Data augmentation |
+
+## ❓ Troubleshooting
+
+<details>
+<summary><b>Connection Error: "Target machine actively refused it"</b></summary>
+
+The API server is not running. Start it with:
+```bash
+uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
+
+</details>
+
+<details>
+<summary><b>CUDA out of memory</b></summary>
+
+The model will automatically use CPU if CUDA is unavailable. To force CPU:
+```python
+# In api/main.py, change:
+device = torch.device("cpu")
+```
+
+</details>
+
+<details>
+<summary><b>Module not found errors</b></summary>
+
+Ensure your virtual environment is activated and dependencies are installed:
+```bash
+pip install -r requirements.txt
+```
+
+</details>
+
+## 📝 License
+
+This project is for educational purposes.
+
+---
+
+Created with ❤️ by [Muthu Selvam](https://github.com/MuthuxSelvam)

@@ -1,0 +1,16 @@
+torch
+torchvision
+timm
+albumentations
+scipy
+numpy
+matplotlib
+scikit-learn
+fastapi
+uvicorn
+python-multipart
+streamlit
+requests
+Pillow
+opencv-python
+streamlit-lottie
